@@ -1,6 +1,6 @@
 # M4 · Validação de privilégio mínimo no S3
 
-**Data** 24/11/2026 · **Região** Ohio (`us-east-2`) · **Estado** Teste real concluído, aguardando aceite.
+**Data** 24/11/2026 · **Região** Ohio (`us-east-2`) · **Estado** Teste real concluído e aceito pelo proprietário.
 
 ## Escopo
 
@@ -29,4 +29,4 @@ Este registro omite identificadores da conta, do bucket e do papel, credenciais 
 
 ## Aceite
 
-- [ ] O proprietário aceita a evidência de leitura permitida e escrita negada para a mesma sessão IAM, com a integridade do objeto e a limpeza dos recursos verificadas.
+- [x] Em 24/11/2026, o proprietário aceitou a evidência de leitura permitida e escrita negada para a mesma sessão IAM, com a integridade do objeto e a limpeza dos recursos verificadas.
