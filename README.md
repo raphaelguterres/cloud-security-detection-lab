@@ -15,7 +15,7 @@ Provisionei um bucket privado com CloudFormation na região de Ohio (`us-east-2`
 
 - **CloudFormation.** Criação e remoção da mesma stack e do mesmo bucket confirmadas em Ohio. [Aceite de 24/11/2026](docs/VALIDACAO-IAC-OHIO.md#aceite)
 - **IAM.** A mesma sessão recebeu **200** em `GetObject` e **403 AccessDenied** em `PutObject`. O operador confirmou conteúdo e ETag preservados. Teste aceito em 24/11/2026. [Evidência](docs/VALIDACAO-IAM-S3-OHIO.md#aceite)
-- **CloudTrail.** O sinal de mudança de política foi verificado com exemplos fictícios. O teste com eventos reais e as demais detecções seguem pendentes. [Evidências do M4](docs/EVIDENCIAS-M4.md)
+- **CloudTrail.** Três detecções validadas com eventos reais de gerenciamento em Ohio. O detector emitiu um sinal para cada mudança de bloqueio público, mudança de política e remoção do bucket. [Resultado e reprodução](docs/VALIDACAO-CLOUDTRAIL-S3-OHIO.md)
 
 ## Acesso e recursos
 

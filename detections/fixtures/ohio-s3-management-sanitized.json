@@ -1,0 +1,46 @@
+[
+  {
+    "eventID": "ohio-PutBucketPublicAccessBlock",
+    "eventTime": "2026-11-24T22:13:33Z",
+    "eventName": "PutBucketPublicAccessBlock",
+    "eventSource": "s3.amazonaws.com",
+    "eventCategory": "Management",
+    "awsRegion": "us-east-2",
+    "readOnly": false,
+    "errorCode": null,
+    "recipientAccountId": "000000000000",
+    "requestParameters": {
+      "bucketName": "example-ohio-bucket",
+      "PublicAccessBlockConfiguration": {
+        "RestrictPublicBuckets": true,
+        "BlockPublicPolicy": true,
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true
+      }
+    }
+  },
+  {
+    "eventID": "ohio-PutBucketPolicy",
+    "eventTime": "2026-11-24T22:13:34Z",
+    "eventName": "PutBucketPolicy",
+    "eventSource": "s3.amazonaws.com",
+    "eventCategory": "Management",
+    "awsRegion": "us-east-2",
+    "readOnly": false,
+    "errorCode": null,
+    "recipientAccountId": "000000000000",
+    "requestParameters": {"bucketName": "example-ohio-bucket"}
+  },
+  {
+    "eventID": "ohio-DeleteBucket",
+    "eventTime": "2026-11-24T22:13:37Z",
+    "eventName": "DeleteBucket",
+    "eventSource": "s3.amazonaws.com",
+    "eventCategory": "Management",
+    "awsRegion": "us-east-2",
+    "readOnly": false,
+    "errorCode": null,
+    "recipientAccountId": "000000000000",
+    "requestParameters": {"bucketName": "example-ohio-bucket"}
+  }
+]

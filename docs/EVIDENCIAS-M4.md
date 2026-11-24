@@ -7,7 +7,7 @@ Revisões documentais registradas em 24/11/2026. Os exemplos usam dados fictíci
 | Escopo e README | AWS Free Plan, Ohio (`us-east-2`), limite de US$ 0 em cobranças e até 100 MiB de objetos fictícios em um bucket privado. [Limites](../README.md#custo) | Reconferir plano, elegibilidade e saldo antes do ensaio. |
 | Infraestrutura | O [template](../infra/bucket-evidencias.json) declara um recurso `AWS::S3::Bucket`, quatro bloqueios de acesso público, SSE-S3, propriedade de objetos pelo dono do bucket e `DeletionPolicy: Delete`. A saída `BucketName` referencia o próprio recurso. | Registrar criação e remoção da mesma stack e do mesmo bucket em Ohio. |
 | IAM | A mesma sessão STS recebeu `200` em `GetObject` e `403 AccessDenied` em `PutObject`. O operador confirmou a integridade do objeto. [Aceite registrado](VALIDACAO-IAM-S3-OHIO.md#aceite) | Concluído. |
-| CloudTrail | O sinal `PutBucketPolicy` foi validado com entradas fictícias. | Observar eventos reais de gerenciamento e concluir três detecções. |
+| CloudTrail | Três sinais confirmados em eventos reais do mesmo bucket de teste em Ohio. [Resultado e testes](VALIDACAO-CLOUDTRAIL-S3-OHIO.md) | Validação técnica concluída. |
 | Encerramento | Procedimento aceito. A referência de custo para 100 MiB por um mês, dez operações de gravação ou listagem e dez leituras foi cerca de US$ 0,0023 a preço de tabela. | Vincular a remoção da stack ao inventário do S3 e verificar custo e créditos após a atualização do faturamento. |
 
 ## Evidência do sinal no CloudTrail
