@@ -1,0 +1,36 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "M4: bucket privado de evidencias sinteticas do laboratorio",
+  "Resources": {
+    "BucketEvidencias": {
+      "Type": "AWS::S3::Bucket",
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true
+        },
+        "OwnershipControls": {
+          "Rules": [
+            { "ObjectOwnership": "BucketOwnerEnforced" }
+          ]
+        },
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            { "ServerSideEncryptionByDefault": { "SSEAlgorithm": "AES256" } }
+          ]
+        },
+        "Tags": [
+          { "Key": "Project", "Value": "cloud-security-detection-lab" }
+        ]
+      }
+    }
+  },
+  "Outputs": {
+    "BucketName": {
+      "Value": { "Ref": "BucketEvidencias" }
+    }
+  }
+}
