@@ -1,30 +1,26 @@
-# Laboratório AWS de Segurança em Nuvem e IaC
+# Cloud Security Detection Lab
 
-## Objetivo
+**Infraestrutura temporária e privilégio mínimo no Amazon S3.**
 
-Praticar a criação e a remoção de uma infraestrutura mínima por código, verificar permissões de privilégio mínimo e usar eventos de gerenciamento do CloudTrail para construir detecções reproduzíveis. O laboratório usa um projeto AWS separado da produção, com recursos regionais em `us-east-2` (Ohio) e dados fictícios.
+Provisionei um bucket privado com CloudFormation na região de Ohio (`us-east-2`). Com a mesma sessão temporária de IAM, li um objeto fictício e confirmei que a tentativa de sobrescrita foi recusada.
 
-## Custo
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/resumo-escuro.png">
+  <img src="docs/img/resumo-claro.png" width="590" alt="A mesma sessão IAM leu o objeto S3 com HTTP 200 e teve a escrita negada com HTTP 403. O objeto permaneceu intacto.">
+</picture>
 
-O laboratório opera em **Ohio** com limite de **US$ 0 em cobranças**. Antes de provisionar, confira se o **AWS Free Plan** está ativo, se há saldo de créditos e se as operações do ensaio são elegíveis. Se a AWS exigir mudança de plano, suspenda o ensaio em nuvem. [Regras do Free Plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html)
-
-## Acesso e recursos
-
-Use até **dois papéis IAM com sessões temporárias** e confiança restrita à conta do laboratório. O papel de provisionamento cria e remove somente os recursos aprovados. O papel de leitura consulta os eventos e os artefatos necessários à evidência, com permissões mínimas.
-
-| Recurso | Limite aprovado |
-| --- | --- |
-| CloudTrail Event history | Consultar e exportar eventos de gerenciamento do laboratório em `us-east-2`. |
-| Amazon S3 | Um bucket privado S3 Standard com acesso público bloqueado. Até **100 MiB** de objetos fictícios e limpeza no fim da sessão. |
-| Monitoramento de custo | Saldo e validade no console. Até um orçamento com notificações se disponível no Free Plan e sem cobrança. |
-| Estado de IaC e evidências | Estado em diretório local privado, fora do Git. Exportações sanitizadas para o relatório. |
-
-Produção, contas de terceiros, dados reais, acesso público, EC2, RDS, NAT Gateway, CloudTrail Lake, trilhas adicionais, eventos de dados e ingestão em CloudWatch Logs ficam fora deste escopo. Ao encerrar o ensaio, confira o inventário, remova os recursos temporários criados e registre o estado final dos recursos e do custo.
+[Validação de IAM](docs/VALIDACAO-IAM-S3-OHIO.md) · [Ciclo do CloudFormation](docs/VALIDACAO-IAC-OHIO.md) · [Template](infra/bucket-evidencias.json)
 
 ## Entregas e estado
 
-- [Template CloudFormation](infra/bucket-evidencias.json) de um bucket privado com SSE-S3, quatro bloqueios de acesso público e política de exclusão.
-- [Evidências técnicas sanitizadas](docs/EVIDENCIAS-M4.md) de escopo, template, IAM, sinal CloudTrail e procedimento de encerramento.
-- [Checklist do M4 na trilha](https://github.com/raphaelguterres/raphaelguterres/blob/main/roadmaps/PROGRESSO.md#m4--cloud-security-e-iac--110180-h-estimadas) para acompanhar os critérios técnicos.
+- **CloudFormation.** Criação e remoção da mesma stack e do mesmo bucket confirmadas em Ohio. [Aceite de 24/11/2026](docs/VALIDACAO-IAC-OHIO.md#aceite)
+- **IAM.** A mesma sessão recebeu **200** em `GetObject` e **403 AccessDenied** em `PutObject`. O operador confirmou conteúdo e ETag preservados. Teste concluído, aguardando aceite. [Evidência](docs/VALIDACAO-IAM-S3-OHIO.md#aceite)
+- **CloudTrail.** O sinal de mudança de política foi verificado com exemplos fictícios. O teste com eventos reais e as demais detecções seguem pendentes. [Evidências do M4](docs/EVIDENCIAS-M4.md)
 
-O escopo e os documentos iniciais têm aceite. A criação e a remoção da stack e do mesmo bucket foram verificadas em Ohio. O proprietário aceitou a evidência em 24/11/2026. As validações do papel IAM e os eventos reais do CloudTrail ficam pendentes. [Evidência do ciclo em Ohio](docs/VALIDACAO-IAC-OHIO.md#aceite)
+## Acesso e recursos
+
+O laboratório usa uma conta de teste, até dois papéis IAM com sessões temporárias e um bucket privado com até **100 MiB** de dados fictícios. O template declara bloqueio de acesso público, SSE-S3 e exclusão do bucket com a stack. O relatório de IAM documenta a checagem das proteções pela API e a limpeza dos recursos criados no ensaio. [Escopo e encerramento](docs/EVIDENCIAS-M4.md)
+
+## Custo
+
+O limite é **US$ 0 em cobranças**. Antes de provisionar, confira o plano gratuito ativo, os créditos e a elegibilidade das operações. Se a AWS exigir mudança de plano, suspenda o ensaio. O painel mostrou US$ 0,00 imediatamente após o teste de IAM. A conferência do faturamento consolidado segue no M4. [Regras do Free Plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html) · [Andamento do M4](https://github.com/raphaelguterres/raphaelguterres/blob/main/roadmaps/PROGRESSO.md#m4--cloud-security-e-iac--110180-h-estimadas)
