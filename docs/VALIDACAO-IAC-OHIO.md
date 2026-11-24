@@ -1,6 +1,6 @@
 # Validação do ciclo CloudFormation e S3 em Ohio
 
-**Data** 24/11/2026 · **Região** `us-east-2` · **Estado** Ciclo verificado, aguardando aceite do proprietário.
+**Data** 24/11/2026 · **Região** `us-east-2` · **Estado** Ciclo verificado e aceito pelo proprietário.
 
 ## Verificação antes da criação
 
@@ -25,4 +25,4 @@ Após o encerramento, a API voltou a retornar `FREE` e `ACTIVE`, com saldo de cr
 
 ## Aceite
 
-- [ ] O proprietário aceita a evidência de criação e remoção da stack e do mesmo bucket em Ohio, incluindo a verificação cruzada do inventário S3 e as limitações registradas.
+- [x] Em 24/11/2026, o proprietário aceitou a evidência de criação e remoção da stack e do mesmo bucket em Ohio, incluindo a verificação cruzada do inventário S3 e as limitações registradas.
