@@ -27,4 +27,4 @@ Produção, contas de terceiros, dados reais, acesso público, EC2, RDS, NAT Gat
 - [Evidências técnicas sanitizadas](docs/EVIDENCIAS-M4.md) de escopo, template, IAM, sinal CloudTrail e procedimento de encerramento.
 - [Checklist do M4 na trilha](https://github.com/raphaelguterres/raphaelguterres/blob/main/roadmaps/PROGRESSO.md#m4--cloud-security-e-iac--110180-h-estimadas) para acompanhar os critérios técnicos.
 
-O escopo e os documentos iniciais têm aceite. A próxima entrega técnica é comprovar a criação e a remoção da stack e do bucket. As validações do papel IAM e os eventos reais do CloudTrail ficam pendentes.
+O escopo e os documentos iniciais têm aceite. A criação e a remoção da stack e do mesmo bucket foram verificadas em Ohio. O registro está aguardando aceite. As validações do papel IAM e os eventos reais do CloudTrail ficam pendentes. [Evidência do ciclo em Ohio](docs/VALIDACAO-IAC-OHIO.md#aceite)
